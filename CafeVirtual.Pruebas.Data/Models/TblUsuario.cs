@@ -9,7 +9,7 @@ public partial class TblUsuario
 
     public int IdRol { get; set; }
 
-    public string? Nombre { get; set; }
+    public string Nombre { get; set; } = null!;
 
     public string? ApellidoPaterno { get; set; }
 
@@ -19,7 +19,7 @@ public partial class TblUsuario
 
     public string Password { get; set; } = null!;
 
-    public string? RutaImagen { get; set; }
+    public string RutaImagen { get; set; } = null!;
 
     public bool Activo { get; set; }
 

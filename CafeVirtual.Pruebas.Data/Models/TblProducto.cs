@@ -9,15 +9,15 @@ public partial class TblProducto
 
     public int IdProveedor { get; set; }
 
-    public string? Nombre { get; set; }
+    public string Nombre { get; set; } = null!;
 
-    public string? Detalle { get; set; }
+    public string Detalle { get; set; } = null!;
 
     public decimal Precio { get; set; }
 
     public int Cantidad { get; set; }
 
-    public DateTime? FechaCreacion { get; set; }
+    public DateTime FechaCreacion { get; set; }
 
     public bool Activo { get; set; }
 

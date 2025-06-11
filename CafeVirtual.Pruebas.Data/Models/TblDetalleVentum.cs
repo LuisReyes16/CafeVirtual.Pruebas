@@ -15,11 +15,11 @@ public partial class TblDetalleVentum
 
     public decimal SubTotal { get; set; }
 
-    public decimal Iva { get; set; }
+    public decimal? Iva { get; set; }
 
     public decimal Total { get; set; }
 
-    public virtual TblProducto? IdProductoNavigation { get; set; }
+    public virtual TblProducto IdProductoNavigation { get; set; } = null!;
 
-    public virtual TblVentum? IdVentaNavigation { get; set; }
+    public virtual TblVentum IdVentaNavigation { get; set; } = null!;
 }
