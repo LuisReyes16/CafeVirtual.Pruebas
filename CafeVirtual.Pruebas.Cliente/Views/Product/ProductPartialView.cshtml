@@ -1,0 +1,63 @@
+﻿@using CafeVirtual.Pruebas.Data.Models;
+@using CafeVirtual.Pruebas.Utilidades.Model;
+@model ResponseViewModel<PaginatedList<TblProducto>>
+<script src="~/js/Productos.js"></script>
+<table id="resultsTable" class="custom-table">
+    <thead>
+        <tr>
+            <th style="display: none;">ID</th>
+            <th class="text-center">NOMBRE</th>
+            <th class="text-center">DETALLE</th>
+            <th class="text-center">PROVEEDOR</th>
+            <th class="text-center">PRECIO</th>
+            <th class="text-center">CANTIDAD</th>
+            <th class="text-center">ACTIVO</th>
+            <th></th>
+            <th></th>
+            <!-- Agrega más columnas según las propiedades de TblProducto -->
+        </tr>
+    </thead>
+    <tbody id="userData">
+        @foreach (var producto in Model.Data.Items)
+        {
+            <tr>
+                <td style="display: none;">@producto.IdProducto</td>
+                <td>@producto.Nombre</td>
+                <td class="popover-form">@producto.Detalle</td>
+                <td>@(producto.IdProveedorNavigation?.Nombre ?? "Sin proveedor")</td>
+                <td class="text-center">$@producto.Precio.ToString("N2")</td>
+                <td class="text-center">@producto.Cantidad</td>
+                <td class="text-center">@producto.Activo</td>
+                @* <td>
+                    <button type="button"
+                            class="update-btn"
+                            onclick="window.location.href='@Url.Action("EditarProducto", "Producto", new { id = producto.IdProducto })'">
+                        <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                        Actualizar
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="remove-btn"
+                            onclick="window.location.href='@Url.Action("EliminarProducto", "Producto", new { id = producto.IdProducto })'">
+                        <span><i class="fas fa-trash-alt" aria-hidden="true"></i></span>
+                        Eliminar
+                    </button>
+                </td> *@
+                <td>
+                    <a href="@Url.Action("EditarProducto", "Product", new { id = producto.IdProducto })"
+                       class="icon-action edit-icon" title="Editar">
+                        <i class="fas fa-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action(" EliminarProducto", "Product" , new { id=producto.IdProducto })"
+                       class="icon-action delete-icon" title="Eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+                <!-- Agrega más columnas según las propiedades de TblProducto -->
+            </tr>
+        }
+    </tbody>
+</table>
